@@ -1,0 +1,9 @@
+<h2><%= @restaurant.name %></h2>
+    <ul>
+        <li>Address: <%= @restaurant.address %></li>
+        <li>Open Hours: <%= @restaurant.open_hrs %></li>
+        <li>Average Cost for two: $<%= @restaurant.cost_two %></li>
+        <li>Phone: <%= @restaurant.phone %></li>
+        <li>Cuisines: <%= @restaurant.cuisines %></li>
+        <%= image_tag @restaurant.image %>
+    </ul>

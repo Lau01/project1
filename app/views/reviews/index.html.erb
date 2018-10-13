@@ -1,0 +1,22 @@
+<h2>FOOD REVIEWS</h1>
+
+<div>
+<% @reviews.each do |review| %>
+  <div class="reviewBox">
+    <div class="reviewTitle">
+      <h3><%= review.user.name %></h3> <h5> went to</h5> <h3><%= review.restaurant.name %></h3>
+    </div>
+    <div>
+      <p><%= review.content %></p>
+    </div>
+    <div>
+      <%= review.rating %> / 5.0
+    </div>
+    <div>
+      <%= image_tag review.image %>
+    </div>
+  </div>
+
+<% end %>
+
+</div>

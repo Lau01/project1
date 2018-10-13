@@ -10,6 +10,19 @@
   </head>
 
   <body>
+    <h1>FOODSITENAME</h1>
+    <% if @current_user.present? %>
+      <p>Welcome <%= @current_user.name %></p>
+      <%= link_to 'LOG OUT', login_path, method: 'delete' %>
+      <% else %>
+      <%= link_to 'LOG IN', login_path %>
+    <% end %>
+    <br>
+    <br>
+    <nav>
+      <%= link_to 'REVIEWS', reviews_path %>
+      <%= link_to 'Restaurants', restaurants_path %>
+    </nav>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,13 @@
+// Place all the styles related to the review controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.reviewBox {
+  border: 2px solid rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+div.reviewTitle > * {
+  display: inline-block;
+}
