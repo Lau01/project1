@@ -13,3 +13,24 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+   background-color: black;
+   color: white;
+    overscroll-behavior-y: none;
+    margin: 0;
+    padding: 0;
+ }
+
+ a {
+   text-decoration: none;
+   color: white;
+ }
+
+.inlineBlock {
+  display: inline-block;
+}
+
+.middle {
+  margin: 0 auto;
+}

@@ -2,20 +2,22 @@
 
 <div>
 <% @reviews.each do |review| %>
-  <div class="reviewBox">
-    <div class="reviewTitle">
-      <h3><%= review.user.name %></h3> <h5> went to</h5> <h3><%= review.restaurant.name %></h3>
+  <a href="<%= review_path(review) %>">
+    <div class="reviewBox">
+      <div class="reviewTitle">
+        <h3><%= review.user.name %></h3> <h5> went to</h5> <h3><%= review.restaurant.name %></h3>
+      </div>
+      <div>
+        <p><%= review.content %></p>
+      </div>
+      <div>
+        <%= review.rating %> / 5.0
+      </div>
+      <div>
+        <%= image_tag review.image, class: 'restaurantImg' %>
+      </div>
     </div>
-    <div>
-      <p><%= review.content %></p>
-    </div>
-    <div>
-      <%= review.rating %> / 5.0
-    </div>
-    <div>
-      <%= image_tag review.image %>
-    </div>
-  </div>
+  </a>
 
 <% end %>
 

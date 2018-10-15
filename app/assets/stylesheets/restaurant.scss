@@ -1,9 +1,116 @@
-// Place all the styles related to the restaurant controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+//  // Place all the styles related to the restaurant controller here.
+//  // They will automatically be included in application.css.
+//  // You can use Sass (SCSS) here: http:sass-lang.com/
+
+.center {
+  margin: 0 auto;
+  max-width: 140vh;
+}
+
+.restaurantContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 2fr);
+    grid-auto-rows: 300px;
+  }
+
+.restaurantImgContainer {
+  max-height: 400px;
+  overflow: hidden;
+  background: linear-gradient(90deg,rgba(0,0,0,.68) 0,transparent);
+  z-index: 2;
+}
 
 .restaurantBox {
-  border: 2px solid rgba(0, 0, 0, 0.4);
-  border-radius: 20px;
-  margin-bottom: 5px;
+  overflow: hidden;
+  position: relative;
 }
+
+.restaurantImg {
+  position: relative;
+  z-index: -1;
+}
+
+.restaurantLink {
+  z-index: 2;
+  position: absolute;
+  top: 40%;
+  left: 10%;
+  font-size: 2em;
+}
+
+// .restaurantContainer {
+//   scroll-snap-type: mandatory;
+//   scroll-snap-points-y: repeat(100vw);
+//   scroll-snap-type: x mandatory;
+//   display: flex;
+//   overflow-x: scroll;
+//   margin: 0;
+//   padding: 0;
+// }
+//
+// .restaurantBox {
+//   border-right: 1px solid white;
+//   padding: 1rem;
+//   max-width: 100vw;
+//   height: 100vh;
+//   scroll-snap-align: start;
+//   text-align: center;
+//   position: relative;
+//   margin: 0;
+//   padding: 0;
+// }
+//
+.backgroundImgContainer {
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(90deg,rgba(0,0,0,.68) 0,transparent);
+  z-index: -2;
+}
+//
+.backgroundImg {
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 99%;
+  position: relative;
+  opacity: 0.8;
+  z-index: -1;
+}
+//
+.textRestaurant {
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  z-index: 1;
+}
+
+.restaurantTitle {
+  font-size: 2em;
+  color: white;
+}
+
+.infoCard {
+  margin: 0 auto;
+  overflow: auto;
+  padding: 0;
+  position: absolute;
+  left: 200vh;
+  bottom: 0;
+  height: 115vh;
+  width: 50%;
+  background-color: white;
+  color: black;
+  font-size: 1.5em;
+  line-height: 2.5em;
+}
+
+.textCard {
+  padding: 10vh;
+  opacity: 0;
+}
+//
+// .restaurantTitleBox > a {
+//   text-decoration: none;
+//   color: black;
+// }

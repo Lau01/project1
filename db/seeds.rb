@@ -153,17 +153,32 @@ c156 = Cuisine.create name: "Yum Cha"
 puts "#{Cuisine.all.length} cuisines"
 
 Restaurant.destroy_all
-re1 = Restaurant.create name: "MyLua's Cafe", address: "Shop 1, 1 Market Street, CBD", open_hrs: "7:00AM - 4:00PM", cost_two: 55, phone:"+61292648535", user_id: u1.id, image:"http://placekitten.com/250/250"
 
-re2 = Restaurant.create name: "Menya Noodle Bar", address: "Shop 2, 1 Market Street, CBD", open_hrs: "11:30AM - 9:00PM", cost_two: 45, phone:"+61292674649", user_id: u2.id, image:"http://placekitten.com/250/250"
+re1 = Restaurant.create name: "Est.", address: "Level 1, Establishment, 252 George Street, CBD, Sydney, NSW", open_hrs: "12noon – 2:30pm, 6pm – 10pm", cost_two: 320, phone:"+61291147312", image:"/assets/est.jpg", year:2013
 
-re3 = Restaurant.create name: "New Shanghai", address: "Westfield Pitt Street Mall, Shop 1017-1020, 188 Pitt Street, CBD, Sydney, NSW", open_hrs: "11:00AM - 9:00PM", cost_two: 50, phone:"02 6181 2652", user_id: u3.id, image:"http://placekitten.com/250/250"
+re2 = Restaurant.create name: "Momofuku Seiōbo", address: "80 Pyrmont Street, The Star, Pyrmont, Pyrmont, Sydney", open_hrs: "6:30pm – 10pm", cost_two: 370, phone:"+61296579169", image:"/assets/momofuku.jpg", year:2019
+
+re3 = Restaurant.create name: "Quay", address: "Upper Level, Overseas Passenger Terminal 5 Hickson Road, The Rocks, Sydney, NSW", open_hrs: "6pm – 10pm", cost_two: 500, phone:"+61292515600", image:"/assets/quay.jpg", year:2019
+
+re4 = Restaurant.create name: "Rockpool", address: "66 Hunter Street, CBD, Sydney, NSW", open_hrs: "6pm – 10pm", cost_two: 150, phone:"+61280781900", image:"/assets/rockpool.jpg", year:2016
+
+re5 = Restaurant.create name: "Sepia", address: "Darling Park, 201 Sussex Street, Darling Harbour, Sydney", open_hrs: "6pm – 10pm", cost_two: 500, phone:"+61292831990", image:"/assets/sepia.jpg", year:2019
+
+re6 = Restaurant.create name: "The Bridge Room", address: "Ground Level, 44 Bridge Street, Circular Quay, Sydney", open_hrs: "12noon – 3pm, 6pm – 10pm", cost_two: 150, phone:"+61292477000", image:"/assets/bridge_room.jpg", year:2017
+
+re7 = Restaurant.create name: "Sixpenny", address: "83 Percival Rd, Stanmore", open_hrs: "6pm – 10pm", cost_two: 280, phone:"+61295726666", image:"/assets/sixpenny.jpg", year: 2019
+
+re8 = Restaurant.create name: "Tetsuya's", address: "529 Kent Street, CBD, Sydney, NSW", open_hrs: "6pm – 10pm", cost_two: 440, phone:"+61292672900", image:"/assets/tetsuya.png", year: 2010
+
+
+
 
 puts "#{Restaurant.all.length} restaurants"
 
 re1.cuisines << c140 << c32 << c23
 re2.cuisines << c118 << c86 << c6
 re3.cuisines << c126 << c6 << c48
+re4.cuisines << c135
 
 Review.destroy_all
 

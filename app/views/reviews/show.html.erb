@@ -1,2 +1,16 @@
-<h1>Review#show</h1>
-<p>Find me in app/views/review/show.html.erb</p>
+<h1>Review by <%= @review.user.name %> for <%= @review.restaurant.name %></h1>
+<% if @review.user == @current_user %>
+  <%= link_to 'EDIT', edit_review_path %>
+  <%= link_to 'DELETE', review_path, method: 'delete' %>
+<% end %>
+<div class="reviewBox">
+  <div>
+    <p><%= @review.content %></p>
+  </div>
+  <div>
+    <%= @review.rating %> / 5.0
+  </div>
+  <div>
+    <%= image_tag @review.image %>
+  </div>
+</div>

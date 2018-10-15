@@ -11,6 +11,11 @@
 // about supported directives.
 //
 //= require jquery
+//= require 'greensock/TweenMax'
+//= require 'greensock/TweenLite'
+//= require 'greensock/easing/EasePack'
+//= require popper
+//= require bootstrap
 //= require rails-ujs
 //= require activestorage
 //= require_tree .

@@ -1,0 +1,30 @@
+<div>
+  <% if flash[:errors].present? %>
+    Please correct:
+    <ol>
+      <% flash[:errors].each do |e| %>
+        <li><%= e %></li>
+      <% end %>
+    </ol>
+  <% end %>
+</div>
+<div>
+  <%= form_for @review do |f| %>
+
+    <%= f.label :restaurant_id, 'Restaurant' %>
+    <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name, prompt: 'Please choose a Restaurant' %>
+    <br>
+    <%= f.label :content %>
+    <%= f.text_area :content %>
+    <br>
+    <%= f.label :rating %>
+    <%= f.text_field :rating %>
+    <br>
+    <%= f.label :image %>
+    <%= f.text_field :image %>
+    <br>
+    <br>
+    <%= f.submit %>
+
+  <% end %>
+</div>
