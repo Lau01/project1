@@ -13,6 +13,13 @@ $(document).ready(function () {
     ease: Power3.easeOut,
   })
 
+  TweenMax.to('.restaurantBox', 2, {
+    css:{
+      opacity: '1'
+    },
+    ease: Power1.easeOut,
+  })
+
 
   // TweenMax.to('.restaurantImg', 3, {
   //   'width':'50vw'

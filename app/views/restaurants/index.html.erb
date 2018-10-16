@@ -3,8 +3,10 @@
   <!-- RESTAURANT SLIDES -->
   <div class="center">
   <div class="restaurantContainer">
+    <% i = 0 %>
     <% @restaurants.each do |r| %>
-      <div class="restaurantBox">
+      <% i += 1 %>
+      <div class="restaurantBox box<%= i %>">
         <!-- <div class="restaurantTitleBox">
           <div class="inlineBlock line">
             <%= link_to r.name, restaurant_path(r.id)  %>

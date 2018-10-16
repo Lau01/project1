@@ -21,16 +21,23 @@
         <li>Phone: <%= @restaurant.phone %></li>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum congue ultricies. Nam facilisis vulputate venenatis. Nulla convallis tempor nibh id gravida. Praesent vel venenatis velit. Fusce ut ipsum congue augue tempus lacinia. Curabitur varius quam quis euismod tincidunt. Etiam ullamcorper suscipit est, sit amet egestas urna aliquam imperdiet. Vivamus sit amet augue nec velit porttitor tincidunt vel sit amet urna. Nullam tristique feugiat dictum. Vestibulum mattis eu massa at vehicula. Nam vel tincidunt ligula, eget posuere massa. Ut sollicitudin, mauris non tincidunt iaculis, leo lacus fringilla tortor, vel sagittis lacus odio scelerisque orci.
 
-        Sed mattis mollis porttitor. Praesent in quam et odio pharetra rutrum a sit amet augue. Morbi non aliquam elit. Cras fermentum dui dui, et scelerisque enim facilisis porta. Suspendisse at nibh augue. Cras fermentum odio metus, nec dictum urna sagittis sed. Curabitur nibh lectus, rutrum id hendrerit consequat, dictum euismod lacus. Cras nulla diam, ornare nec aliquam a, tincidunt in justo.
-
     </ul>
     What people are saying:
-    <% @restaurant.reviews.each do |r| %>
-    <ul>
-      <p><%= r.user.name %> on ENTERDATE:</p>
-      <li><%= r.content %></li>
-    </ul>
-
-    <% end %>
+    <div class="reviewsBox">
+      <% @restaurant.reviews.each do |r| %>
+      <div class="reviewCard">
+        <p><%= r.user.name %> on ENTERDATE:</p>
+        <div class="reviewContent">
+          <%= r.content %>
+        </div>
+        <div class="reviewImageBox">
+          <%= image_tag r.image %>
+        </div>
+        <div class="favReview">
+          Favourites: AMOUNT
+        </div>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>
