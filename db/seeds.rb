@@ -1,8 +1,8 @@
 User.destroy_all
 
-u1 = User.create name: "Linna", email: "linna@ga.co", password: "chicken"
-u2 = User.create name: "Bob", email: "bob@ga.co", password: "chicken"
-u3 = User.create name: "Patrick", email: "patrick@ga.co", password: "chicken"
+u1 = User.create name: "Linna", email: "linna@ga.co", password: "chicken", image: "/assets/bg.jpeg"
+u2 = User.create name: "Bob", email: "bob@ga.co", password: "chicken", image: "/assets/bg.jpeg"
+u3 = User.create name: "Patrick", email: "patrick@ga.co", password: "chicken", image: "/assets/bg.jpeg"
 
 puts "#{User.all.length} users"
 

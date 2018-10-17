@@ -37,6 +37,7 @@
         <span class="navbar-text nav-link">
           <% if @current_user.present? %>
           <p class="inlineBlock">Welcome <%= @current_user.name %></p>
+            <%= image_tag @current_user.image, class: "profileImage" %>
             <%= link_to 'Log Out', login_path, method: 'delete', class:'nav-link inlineBlock' %>
           <% else %>
             <%= link_to 'Log In', login_path, class:'nav-link inlineBlock' %>

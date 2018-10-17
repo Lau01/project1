@@ -1,4 +1,31 @@
 <div>
+  <%= form_for @review, html: {multipart: true} do |f| %>
+  <div class="form-row">
+    <div class="col">
+      <%= f.label :restaurant_id, 'Restaurant', for: "inputRestaurant" %>
+      <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name, prompt: 'Please choose a Restaurant', id: "inputRestaurant", class: "form-control"%>
+    </div>
+    <div class="col">
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+    </div>
+    <div class="col">
+      <%= f.label :rating %>
+      <%= f.text_field :rating %>
+    </div>
+
+    <div class="col">
+      <%= f.label :image %>
+      <%= f.cl_image_upload :image %>
+    </div>
+  </div>
+
+  <%= f.submit %>
+    <% end %>
+  </div>
+
+
+<div>
   <% if flash[:errors].present? %>
     Please correct:
     <ol>
@@ -6,26 +33,5 @@
         <li><%= e %></li>
       <% end %>
     </ol>
-  <% end %>
-</div>
-<div>
-  <%= form_for @review, html: {multipart: true} do |f| %>
-
-      <%= f.label :restaurant_id, 'Restaurant' %>
-      <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name, prompt: 'Please choose a Restaurant'%>
-
-      <%= f.label :content %>
-      <%= f.text_area :content %>
-
-      <%= f.label :rating %>
-      <%= f.text_field :rating %>
-
-      <%= f.label :image %>
-      <%= f.cl_image_upload :image %>
-
-      <%= f.submit %>
-
-  </div>
-
   <% end %>
 </div>
