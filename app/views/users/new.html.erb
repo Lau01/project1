@@ -1,31 +1,33 @@
-<div class="wrapper">
-  <div class="signUpTitle">
-    Sign Up
-  </div>
 
+<div class="signUpTitle">
+  Sign Up
+</div>
+
+<div class="wrapper">
   <div class="signUpContainer">
     <div class="signUpForm">
       <%= form_for @user do |f| %>
-
-        <%= f.label :name %>
-        <%= f.text_field :name %>
-        <br>
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-        <br>
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-        <br>
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation %>
-        <br>
+        <div class="inputForm">
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+          <br>
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+          <br>
+          <%= f.label :password %>
+          <%= f.password_field :password %>
+          <br>
+          <%= f.label :password_confirmation %>
+          <%= f.password_field :password_confirmation %>
+          <br>
+        </div>
         <div class="submitBox">
           <%= f.submit %>
         </div>
       <% end %>
     </div>
   </div>
-
+  <div class='errors'>
     <% if flash[:errors].present?  %>
        <strong>Please correct the following errors:</strong>
        <ol>
