@@ -76,3 +76,8 @@ r17 = Review.create content: "It was really good!! Always coming again!", rating
 r18 = Review.create content: "Amazing! Had an excellent time", rating: 1, user_id: u3.id, restaurant_id: re7.id, image: "http://placekitten.com/250/250"
 
 puts "#{Review.all.length} reviews"
+
+r18.liked_by << u1 << u2 << u3
+r14.liked_by << u4 << u2 << u6
+r12.liked_by << u1 << u6 << u4
+r10.liked_by << u4 << u5 << u4

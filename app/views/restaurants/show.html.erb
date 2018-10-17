@@ -12,7 +12,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarText">
-    <ul class="navbar-nav mr-auto">
+    <ul class="navList navbar-nav mr-auto">
       <li class="nav-item">
         <a class="nav-link" href="#desc">Description</a>
       </li>
@@ -46,7 +46,7 @@
     </div>
     <div class="col-sm">
       <div>
-        <h3>Awarded 3 hats in</h3>
+        <h3>Awarded 3 Hats in</h3>
         <%= @restaurant.year %>
       </div>
     </div>
@@ -79,7 +79,7 @@
               <%= cl_image_tag r.image, class: "reviewImage" %>
             </div>
             <div class="favReview">
-              Rating:<%= r.rating %>/5 |
+              Rating:<%= r.rating %> / 5.0 |
               Likes: AMOUNT
             </div>
           </div>

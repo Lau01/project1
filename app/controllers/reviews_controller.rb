@@ -31,7 +31,13 @@ class ReviewsController < ApplicationController
   end
 
   def index
-    @reviews = Review.all
+
+    if params[:content]
+      @reviews = Review.where('content LIKE ?', "%#{params[:content]}%")
+    else
+      @reviews = Review.all
+    end
+
   end
 
   def show

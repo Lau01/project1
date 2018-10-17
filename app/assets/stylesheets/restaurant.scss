@@ -235,9 +235,6 @@
   color: grey;
 }
 
-.aboutContainer {
-  background-color: rgba(200, 200, 200, 0.5);
-}
 
 .bannerPicture {
   width: 100vw;
@@ -248,13 +245,33 @@
   font-size: 2em;
 }
 
+
+.aboutContainer {
+  margin: 0;
+  background-color: rgba(200, 200, 200, 0.5);
+}
+
 .aboutTitle {
-  font-size: 4em;
+  font-size: 2em;
+}
+
+.about {
+  margin: 0 auto;
+  width: 600px;
 }
 
 .bottomNav {
-  text-align: center;
   background-color: rgba(200, 200, 200, 0.5);
+}
+
+.navList {
+  margin: 0 auto !important;
+  right: 1em !important;
+}
+
+.navList>li {
+  font-size: 1em;
+  padding: 0 1.5em 0 1.5em !important;
 }
 
 .navGridContainer {

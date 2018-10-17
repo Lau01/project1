@@ -1,6 +1,6 @@
 
 
-<h2><%= @user.name %></h2>
+<h2><%= @user.name %>'s Profile</h2>
 <div class="container indexReviewBox">
   <div class="row">
     <div class="col-10">
@@ -19,7 +19,7 @@
                 <%= cl_image_tag r.image, class: "reviewImage" %>
               </div>
               <div class="favReview">
-                Rating:<%= r.rating %>/5 |
+                Rating:<%= r.rating %> / 5.0 |
                 Likes: AMOUNT
               </div>
             </div>
@@ -37,7 +37,7 @@
         Follows?
       <% end %>
       <br>
-      <% if @current_user.present? && @current_user = @user %>
+      <% if @current_user.present? && @current_user == @user %>
         <%= link_to 'Edit Profile', edit_user_path %>
       <% end %>
     </div>

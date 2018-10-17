@@ -1,9 +1,9 @@
-<h2>Experiences</h1>
+<h2>Activity Feed</h1>
 
 <div class="container indexReviewBox">
   <div class="row">
-    <div class="col-10">
-      <div class="col-12 col-md-8">
+    <div class="col">
+      <div class="col col-md-8">
         <div class="reviewsBox reviewsScrollIndex">
           <% @reviews.each do |r| %>
             <div class="reviewCard">
@@ -18,7 +18,7 @@
                 <%= cl_image_tag r.image, class: "reviewImage" %>
               </div>
               <div class="favReview">
-                Rating:<%= r.rating %>/5 |
+                Rating:<%= r.rating %> / 5.0 |
                 Likes: AMOUNT
               </div>
             </div>
@@ -28,7 +28,11 @@
     </div>
 
 
-    <div class="col">
+    <div class="col-2 col">
+      <%= form_tag(reviews_path, method: :get) do %>
+        <%= text_field_tag :content %>
+        <%= submit_tag 'Search' %>
+      <% end %>
       <% if @current_user.present? %>
         <%= link_to 'Share your experience', new_review_path %>
         Likes?

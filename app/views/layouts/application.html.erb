@@ -14,7 +14,7 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">SITENAME</a>
+      <a class="navbar-brand" href="<%=  %>">Hats</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -36,7 +36,7 @@
         </ul>
         <span class="navbar-text nav-link">
           <% if @current_user.present? %>
-            <p class="inlineBlock">Welcome <%= @current_user.name %></p>
+            <p class="inlineBlock">Welcome <%= @current_user.id %></p>
             <%= image_tag @current_user.image, class: "profileImage" %>
             <%= link_to 'Log Out', login_path, method: 'delete', class:'nav-link inlineBlock' %>
           <% else %>
