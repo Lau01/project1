@@ -1,24 +1,21 @@
-<h2>ALL RESTAURANTS</h2>
 
-  <!-- RESTAURANT SLIDES -->
-  <div class="center">
-  <div class="restaurantContainer">
-    <% i = 0 %>
-    <% @restaurants.each do |r| %>
-      <% i += 1 %>
-      <div class="restaurantBox box<%= i %>">
-        <!-- <div class="restaurantTitleBox">
-          <div class="inlineBlock line">
-            <%= link_to r.name, restaurant_path(r.id)  %>
-          </div>
-        </div> -->
-        <div class="restaurantImgContainer">
-          <div class="restaurantLink">
-            <%= link_to r.name, restaurant_path(r.id)  %>
-          </div>
-          <%= image_tag r.image, class:"restaurantImg"  %>
-        </div>
-      </div>
-    <% end %>
+<div class="d-flex flex-row bd-highlight mb-3">
+  <div class="d-flex align-items-start menu">
+    <ul class="listContainer">
+      <% @restaurants.each do |r| %>
+    <li class="restaurantList"><%= link_to r.name, restaurant_path(r.id), class:"linkText"  %></li>
+  <% end %>
+    </ul>
+</div>
+  <div class="align-self menuImage">
+    <%= image_tag @restaurants.first.image %>
   </div>
+</div>
+
+<div class="aboutContainer">
+  <span class="aboutTitle">
+    ABOUT
+  </span>
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo ullam neque veritatis perferendis quasi libero tempore ea, odit dolore consequatur nisi aliquid molestias, enim rem saepe magni facere, perspiciatis vero?
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo ullam neque veritatis perferendis quasi libero tempore ea, odit dolore consequatur nisi aliquid molestias, enim rem saepe magni facere, perspiciatis vero?
 </div>

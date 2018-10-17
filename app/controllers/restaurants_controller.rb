@@ -21,6 +21,7 @@ class RestaurantsController < ApplicationController
   end
 
   def show
+    @review = Review.new
     @restaurant = Restaurant.find params[:id]
   end
 
@@ -43,4 +44,8 @@ class RestaurantsController < ApplicationController
   def restaurant_params
     params.require(:restaurant).permit(:name, :address, :open_hrs, :cost_two, :phone, :user_id, :image)
   end
+
+  # def review_params
+  #   params.require(:review).permit(:content, :rating, :restaurant_id, :image)
+  # end
 end

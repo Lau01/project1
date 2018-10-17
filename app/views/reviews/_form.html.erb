@@ -9,22 +9,23 @@
   <% end %>
 </div>
 <div>
-  <%= form_for @review do |f| %>
+  <%= form_for @review, html: {multipart: true} do |f| %>
 
-    <%= f.label :restaurant_id, 'Restaurant' %>
-    <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name, prompt: 'Please choose a Restaurant' %>
-    <br>
-    <%= f.label :content %>
-    <%= f.text_area :content %>
-    <br>
-    <%= f.label :rating %>
-    <%= f.text_field :rating %>
-    <br>
-    <%= f.label :image %>
-    <%= f.text_field :image %>
-    <br>
-    <br>
-    <%= f.submit %>
+      <%= f.label :restaurant_id, 'Restaurant' %>
+      <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name, prompt: 'Please choose a Restaurant'%>
+
+      <%= f.label :content %>
+      <%= f.text_area :content %>
+
+      <%= f.label :rating %>
+      <%= f.text_field :rating %>
+
+      <%= f.label :image %>
+      <%= f.cl_image_upload :image %>
+
+      <%= f.submit %>
+
+  </div>
 
   <% end %>
 </div>

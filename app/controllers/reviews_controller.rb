@@ -8,11 +8,22 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new (review_params)
+
+    # Cloudinary upload happens between .new and .save
+
+    #if file uploaded
+    if params[:file].present?
+      response = Cloudinary::Uploader.upload params[:file]
+      @review.image = response["public_id"]
+    end
+
     @review.user = @current_user
     @review.save
 
     if @review.persisted?
-      redirect_to reviews_path
+      restaurant = Restaurant.find params[:review][:restaurant_id].to_i
+      # raise "hell"
+      redirect_to restaurant_path(restaurant)
     else
       flash[:errors] = @review.errors.full_messages
       render :new
@@ -29,6 +40,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find params[:id]
+
   end
 
   def update
@@ -48,12 +60,14 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    @review = Review.find params[:id]
     unless @review.user == @current_user
-      redirect_to reviews_path
-      return
+        redirect_to reviews_path
+        return
+      else
+        @review.destroy
     end
 
-    Review.find(params[:id]).destroy
     redirect_to reviews_path
   end
 

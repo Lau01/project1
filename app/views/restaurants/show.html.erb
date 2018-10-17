@@ -1,43 +1,140 @@
-<div class="wrapper">
-  <div class="backgroundImgContainer">
-    <%= image_tag @restaurant.image, class: "backgroundImg" %>
+
+
+<div>
+  <%= image_tag @restaurant.image, class: "bannerPicture" %>
+</div>
+
+<nav class="bottomNav navbar navbar-expand-lg navbar-light ">
+  <span class="navbar-text restaurantName">
+    <%= @restaurant.name %>
+  </span>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#">Description</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Comments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">About</a>
+      </li>
+    </ul>
+    <%= link_to 'Share your experience', new_review_path %>
   </div>
-  <div class="textRestaurant">
-    <div class="restaurantTitle">
-      <h2><%= @restaurant.name %></h2>
+</nav>
+
+<div class="container navGridContainer">
+  <div class="row">
+    <div class="col-sm">
+      <h3>Open Hours</h3>
+      <%= @restaurant.open_hrs %>
+    </div>
+    <div class="col-sm">
+      <h3>Location</h3>
+      <%= @restaurant.address %>
+    </div>
+    <div class="col-sm">
+      <div>
+        <h3>Contact</h3>
+        <%= @restaurant.phone %>
+      </div>
+    </div>
+    <div class="col-sm">
+      <div>
+        <h3>Awarded 3 hats in</h3>
+        <%= @restaurant.year %>
+      </div>
     </div>
   </div>
-    <!-- <%= link_to 'Edit Restaurant', edit_restaurant_path %>
-    <%= link_to 'Delete Restaurant', restaurant_path, method: 'delete' %> -->
 </div>
-  <div class="infoCard">
-    <div class="textCard">
-      <h2><%= @restaurant.name %></h2>
-    <ul>
-        <li>Latest 3 Hatted Award: <%= @restaurant.year %></li>
-        <li>Address: <%= @restaurant.address %></li>
-        <li>Opening Hours: <%= @restaurant.open_hrs %></li>
-        <li>Average Cost for two: $<%= @restaurant.cost_two %></li>
-        <li>Phone: <%= @restaurant.phone %></li>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin bibendum congue ultricies. Nam facilisis vulputate venenatis. Nulla convallis tempor nibh id gravida. Praesent vel venenatis velit. Fusce ut ipsum congue augue tempus lacinia. Curabitur varius quam quis euismod tincidunt. Etiam ullamcorper suscipit est, sit amet egestas urna aliquam imperdiet. Vivamus sit amet augue nec velit porttitor tincidunt vel sit amet urna. Nullam tristique feugiat dictum. Vestibulum mattis eu massa at vehicula. Nam vel tincidunt ligula, eget posuere massa. Ut sollicitudin, mauris non tincidunt iaculis, leo lacus fringilla tortor, vel sagittis lacus odio scelerisque orci.
 
-    </ul>
-    What people are saying:
-    <div class="reviewsBox">
-      <% @restaurant.reviews.each do |r| %>
-      <div class="reviewCard">
-        <p><%= r.user.name %> on ENTERDATE:</p>
-        <div class="reviewContent">
-          <%= r.content %>
+<div class="container descriptionContainer">
+  <div class="row">
+    <div class="col-6 col-md-4 titleDesc"><%= @restaurant.name %></div>
+    <div class="col-12 col-md-8"><%= @restaurant.description %></div>
+  </div>
+</div>
+
+
+<div class="container commentsContainer">
+  <div class="row">
+    <div class="col-12 col-md-8">
+      <div class="reviewsBox">
+        <% @restaurant.reviews.each do |r| %>
+          <div class="reviewCard">
+            <p><%=link_to r.user.name, user_path(r.user) %> on ENTERDATE:</p>
+            <div class="reviewContent">
+              <%= r.content %>
+            </div>
+            <div class="reviewImageBox">
+              <%= cl_image_tag r.image, class: "reviewImage" %>
+            </div>
+            <div class="favReview">
+              Likes: AMOUNT
+            </div>
+          </div>
+          <% end %>
         </div>
-        <div class="reviewImageBox">
-          <%= image_tag r.image %>
-        </div>
-        <div class="favReview">
-          Favourites: AMOUNT
+    </div>
+
+    <div class="col-6 col-md-4">
+      <span class="titleDesc">What others are saying about <%= @restaurant.name %></span>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Share your experience</button>
+
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"       aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+
+            <div class="container">
+              <%= form_for @review, html: {multipart: true} do |f| %>
+
+              <fieldset disabled>
+                <div class="form-group">
+                  <label for="disabledTextInput">Restaurant</label>
+                  <input type="text" id="disabledTextInput" class="form-control" placeholder="<%= @restaurant.name %>">
+                </div>
+              </fieldset>
+
+                <div class="row">
+                    <%= f.label :content, 'Your Experience', for: "exampleFormControlTextarea1" %>
+                    <%= f.text_area :content, class: "form-control", id: "exampleFormControlTextarea1", rows: "3"  %>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                    <%= f.label :rating, for: "formGroupExampleInput" %>
+                    <%= f.text_field :rating, class: "form-control", id: "formGroupExampleInput" %>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                    <%= f.label :image, for: "exampleFormControlFile1" %>
+                    <%= f.cl_image_upload :image, class: "form-control-file", id: "exampleFormControlFile1" %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                    <%= f.label :image, for: "exampleFormControlFile1" %>
+                    <%= f.hidden_field :restaurant_id, value: "#{@restaurant.id}"%>
+                  </div>
+                </div>
+              </div>
+
+              <%= f.submit %>
+
+            </div>
+
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
-      <% end %>
+
     </div>
-  </div>
-</div>
+
+    
