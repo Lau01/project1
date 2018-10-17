@@ -1,6 +1,10 @@
 // Place all the styles related to the users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.wrapper {
+  margin: 0 auto;
+  width: 700px;
+}
 
 .signUpTitle {
 
@@ -11,10 +15,8 @@
 .signUpContainer {
   border: 1px solid grey;
   text-align: center;
-  margin: 0 auto;
-  width: 700px;
 }
 
 .signUpForm {
-  margin: 1em 0 1em 0;
+  margin: 4em 0 4em 0;
 }

@@ -62,3 +62,4 @@ gem 'jquery-rails'
 gem 'greensock-rails'
 gem 'bootstrap', '~> 4.1.3'
 gem 'cloudinary'
+gem 'rails_12factor', group: :production
