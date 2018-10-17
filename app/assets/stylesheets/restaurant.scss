@@ -199,7 +199,8 @@
 }
 
 .menuImage {
-  overflow-y: hidden;
+  // text-align: center;
+  overflow: hidden;
   max-height:70vh;
   width: 65vw;
 }
@@ -278,6 +279,10 @@
   overflow: scroll;
   max-height: 50vh;
   min-width: 300px;
+}
+
+.modalShare {
+  display: block;
 }
 
 .reviewCard {
