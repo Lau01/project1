@@ -1,4 +1,5 @@
 class RestaurantsController < ApplicationController
+  before_action :fetch_user
   def new
     @restaurant = Restaurant.new
   end

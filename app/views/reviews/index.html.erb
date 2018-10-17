@@ -1,34 +1,40 @@
-<h2>FOOD REVIEWS</h1>
+<h2>Experiences</h1>
 
-<% if @current_user.present? %>
-      <p>Welcome <%= @current_user.name %></p>
-      <%= link_to 'Make a new review', new_review_path %>
-      <%= link_to 'Add a new Restaurant', new_restaurant_path %>
-      <%= link_to 'LOG OUT', login_path, method: 'delete' %>
-    <% else %>
-      <%= link_to 'LOG IN', login_path %>
-      <%= link_to 'Sign UP', new_user_path %>
-<% end %>
-
-<div>
-<% @reviews.each do |review| %>
-  <a href="<%= review_path(review) %>">
-    <div class="reviewBox">
-      <div class="reviewTitle">
-        <h3><%= review.user.name %></h3> <h5> went to</h5> <h3><%= review.restaurant.name %></h3>
-      </div>
-      <div>
-        <p><%= review.content %></p>
-      </div>
-      <div>
-        <%= review.rating %> / 5.0
-      </div>
-      <div>
-        <%= cl_image_tag review.image, class: 'restaurantImg' %>
+<div class="container indexReviewBox">
+  <div class="row">
+    <div class="col-10">
+      <div class="col-12 col-md-8">
+        <div class="reviewsBox reviewsScrollIndex">
+          <% @reviews.each do |r| %>
+            <div class="reviewCard">
+              <div class="reviewTitle">
+                <p class="inlineBlock floatLeft"><%= image_tag r.user.image, class: "profileImage" %></p>
+                <p class="inlineBlock"><%=link_to r.user.name, user_path(r.user) %> on ENTERDATE about <%= link_to r.restaurant.name, restaurant_path(r.restaurant) %>:</p>
+            </div>
+              <div class="reviewContent">
+                <%= r.content %>
+              </div>
+              <div class="reviewImageBox">
+                <%= cl_image_tag r.image, class: "reviewImage" %>
+              </div>
+              <div class="favReview">
+                Rating:<%= r.rating %>/5 |
+                Likes: AMOUNT
+              </div>
+            </div>
+            <% end %>
+          </div>
       </div>
     </div>
-  </a>
 
-<% end %>
 
+    <div class="col">
+      <% if @current_user.present? %>
+        <%= link_to 'Share your experience', new_review_path %>
+        Likes?
+        <br>
+        Follows?
+      <% end %>
+    </div>
+  </div>
 </div>

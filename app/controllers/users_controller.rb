@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :fetch_user
   def new
     @user = User.new
   end
@@ -20,9 +21,23 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find params[:id]
   end
 
   def update
+    @user = User.find params[:id]
+
+    unless @user == @current_user
+      redirect_to user_path(@current_user)
+      return
+    end
+
+    if @user.update(user_params)
+      redirect_to user_path(@current_user)
+    else
+      flash[:errors] = @user.errors.full_messages
+      render :edit
+    end
   end
 
   private

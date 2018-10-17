@@ -14,20 +14,21 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Description</a>
+        <a class="nav-link" href="#desc">Description</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Comments</a>
+        <a class="nav-link" href="#comments">Comments</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#">About</a>
       </li>
     </ul>
-    <%= link_to 'Share your experience', new_review_path %>
+    <!-- <%= link_to 'Share your experience', new_review_path %> -->
   </div>
 </nav>
 
 <div class="container navGridContainer">
+  <a name="desc"></a>
   <div class="row">
     <div class="col-sm">
       <h3>Open Hours</h3>
@@ -61,14 +62,15 @@
 
 
 <div class="container commentsContainer">
+  <a name="comments"></a>
   <div class="row">
     <div class="col-12 col-md-8">
-      <div class="reviewsBox">
+      <div class="reviewsBox reviewsBoxRestaurant">
         <% @restaurant.reviews.each do |r| %>
           <div class="reviewCard">
             <div class="reviewTitle">
               <p class="inlineBlock floatLeft"><%= image_tag r.user.image, class: "profileImage" %></p>
-              <p class="inlineBlock"><%=link_to r.user.name, user_path(r.user) %> on ENTERDATE:</p>
+              <p class="inlineBlock"><%=link_to r.user.name, user_path(r.user) %> on ENTERDATE about <%= link_to r.restaurant.name, restaurant_path(r.restaurant) %>:</p>
           </div>
             <div class="reviewContent">
               <%= r.content %>
@@ -89,7 +91,7 @@
       <div class="titleDesc">
         <p>What others are saying about <%= @restaurant.name %></p>
       </div>
-      <button type="button" class="modalShare btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Share your experience</button>
+      <button type="button" class="modalShare btn buttonColour" data-toggle="modal" data-target="#exampleModal" data-whatever="@getbootstrap">Share your experience</button>
 
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"       aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
