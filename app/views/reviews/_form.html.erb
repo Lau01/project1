@@ -1,37 +1,45 @@
-<div>
-  <%= form_for @review, html: {multipart: true} do |f| %>
-  <div class="form-row">
-    <div class="col">
-      <%= f.label :restaurant_id, 'Restaurant', for: "inputRestaurant" %>
-      <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name, prompt: 'Please choose a Restaurant', id: "inputRestaurant", class: "form-control"%>
-    </div>
-    <div class="col">
-      <%= f.label :content %>
-      <%= f.text_area :content %>
-    </div>
-    <div class="col">
-      <%= f.label :rating %>
-      <%= f.text_field :rating %>
-    </div>
 
-    <div class="col">
-      <%= f.label :image %>
-      <%= f.cl_image_upload :image %>
-    </div>
-  </div>
+<div class="signUpTitle">
+  Add your Experience
+</div>
 
-  <%= f.submit %>
-    <% end %>
-  </div>
-
-
-<div>
-  <% if flash[:errors].present? %>
-    Please correct:
-    <ol>
-      <% flash[:errors].each do |e| %>
-        <li><%= e %></li>
+<div class="wrapper">
+  <div class="signUpContainer">
+    <div class="signUpForm">
+      <%= form_for @review, html: {multipart: true} do |f| %>
+        <div class="inputForm">
+          <%= f.label :restaurant_id, 'Restaurant', for: "inputRestaurant" %>
+          <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name, prompt: 'Please choose a Restaurant', id: "inputRestaurant", class: "form-control"%>
+          <br>
+          <div class="input-group resize">
+            <div class="input-group-prepend">
+              <%= f.label :content, "Your experience", class: "input-group-text" %>
+            </div>
+          <%= f.text_area :content, class:"form-control", 'aria-label' => "With textarea" %>
+          </div>
+          <br>
+          <%= f.label :rating %>
+          <%= f.text_field :rating %>
+          <br>
+          <%= f.label :image %>
+          <%= f.cl_image_upload :image %>
+          <br>
+        </div>
+        <div class="submitBox">
+          <%= f.submit %>
+        </div>
       <% end %>
-    </ol>
+    </div>
+  </div>
+</div>
+
+<div class='errors'>
+  <% if flash[:errors].present?  %>
+     <strong>Please correct the following errors:</strong>
+     <ol>
+     <% flash[:errors].each do |error| %>
+       <li><%= error %></li>
+     <% end %>
+     </ol>
   <% end %>
 </div>

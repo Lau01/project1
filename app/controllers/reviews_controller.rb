@@ -35,13 +35,35 @@ class ReviewsController < ApplicationController
 
   def index
 
-    if params[:content]
-      @reviews = Review.where('content LIKE ?', "%#{params[:content]}%")
+    # Review.joins(:user).where('name ILIKE :query', query: '%bob%')
+    # Review.joins(:user).where('rating >= :val', val: 4)
+
+    if params[:name]
+      @reviews = Review.joins(:user).where('name ILIKE :query', query: "%#{params[:name]}%")
     else
       @reviews = Review.all
     end
+  end
 
+  def like
+    @review = Review.find params[:id].to_i
 
+    # add current user to the liked_by list if the user hasn't liked it
+    unless @review.liked_by.include? @current_user
+      @review.liked_by << @current_user
+    end
+
+    redirect_to review_path(@review)
+  end
+
+  def unlike
+    @review = Review.find params[:id].to_i
+
+    if @review.liked_by.include? @current_user
+      @review.liked_by.delete(@current_user)
+    end
+
+    redirect_to review_path(@review)
   end
 
   def show
@@ -50,11 +72,11 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find params[:id]
-
   end
 
   def update
     @review = Review.find params[:id]
+
 
     unless @review.user == @current_user
       redirect_to restaurants_path
@@ -62,6 +84,12 @@ class ReviewsController < ApplicationController
     end
 
     if @review.update(review_params)
+      if params[:file].present?
+        response = Cloudinary::Uploader.upload params[:file]
+        @review.image = response["public_id"]
+        @review.save
+      end
+      
       redirect_to review_path(@review)
     else
       flash[:errors] = @review.errors.full_messages

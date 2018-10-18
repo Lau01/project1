@@ -1,20 +1,33 @@
-<h2>Login</h2>
-<% if flash[:error] %>
-  <br>
-  <strong><%= flash[:error] %></strong>
-  <br>
-  <br>
-<% end %>
+<div class="signUpTitle">
+  Login
+</div>
 
-<%= form_tag login_path do %>
+<div class="wrapper">
+  <div class="signUpContainer">
+    <div class="signUpForm">
+      <%= form_tag login_path do %>
+        <div class="inputForm">
+          <%= label_tag :email %>
+          <%= email_field_tag :email, nil %>
+          <br>
+          <%= label_tag :password %>
+          <%= password_field_tag :password, nil %>
 
-  <%= label_tag :email %>
-  <%= email_field_tag :email, nil %>
-  <br>
-
-  <%= label_tag :password %>
-  <%= password_field_tag :password, nil %>
-  <br>
-  <%= submit_tag 'Login' %>
-
-<% end %>
+        </div>
+        <div class="submitBox">
+          <%= submit_tag 'Login' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class='errors'>
+    <% if flash[:errors].present?  %>
+       <strong>Please correct the following errors:</strong>
+       <ol>
+       <% flash[:errors].each do |error| %>
+         <li><%= error %></li>
+       <% end %>
+       </ol>
+    <% end %>
+  </div>
+</div>

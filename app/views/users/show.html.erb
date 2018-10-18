@@ -9,8 +9,8 @@
           <% @user.reviews.each do |r| %>
             <div class="reviewCard">
               <div class="reviewTitle">
-                <p class="inlineBlock floatLeft"><%= image_tag r.user.image, class: "profileImage" %></p>
-                <p class="inlineBlock"><%=link_to r.user.name, user_path(r.user) %> on ENTERDATE about <%= link_to r.restaurant.name, restaurant_path(r.restaurant) %>:</p>
+                <p class="inlineBlock floatLeft"><%= cl_image_tag r.user.image, class: "profileImage" %></p>
+                <p class="inlineBlock"><%=link_to r.user.name, user_path(r.user) %> on <%= link_to r.created_at.strftime("%D at %I:%M%p"), review_path(r.id) %> about <%= link_to r.restaurant.name, restaurant_path(r.restaurant) %>:</p>
             </div>
               <div class="reviewContent">
                 <%= r.content %>
@@ -19,8 +19,9 @@
                 <%= cl_image_tag r.image, class: "reviewImage" %>
               </div>
               <div class="favReview">
-                Rating:<%= r.rating %> / 5.0 |
+                Rating: <%= r.rating %> / 5.0 |
                 Likes: <%= r.liked_by.length %>
+                <%= link_to 'Like Post', like_review_path(r.id), :id => "#{r.id}" %>
               </div>
             </div>
             <% end %>
@@ -32,9 +33,6 @@
     <div class="col">
       <% if @current_user.present? %>
         <%= link_to 'Share your experience', new_review_path %>
-        Likes?
-        <br>
-        Follows?
       <% end %>
       <br>
       <% if @current_user.present? && @current_user == @user %>
