@@ -69,7 +69,7 @@ r14 = Review.create content: "Lorem ipsum dolor sit amet, consectetur adipisicin
 
 r15 = Review.create content: "Was very expensive but worth the price. ", rating: 3, user_id: u5.id, restaurant_id: re8.id, image: "/assets/food12.jpg"
 
-r16 = Review.create content: "Service was incredibly bad. Waiter spat in my food.", rating: 2, user_id: u4.id, restaurant_id: re1.id, image: "/assets/food11.jpg"
+r16 = Review.create content: "Service was incredibly bad. Waiter spat in my food.", rating: 2, user_id: u4.id, restaurant_id: re1.id, image: "/assets/food10.jpg"
 
 r17 = Review.create content: "The dessert was so good. Always a pleasure.", rating: 5, user_id: u1.id, restaurant_id: re5.id, image: "/assets/food7.jpg"
 
