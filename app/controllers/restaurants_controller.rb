@@ -5,16 +5,16 @@ class RestaurantsController < ApplicationController
   end
 
   def create
-    @restaurant = Restaurant.new (restaurant_params)
-    @restaurant.user = @current_user
-    @restaurant.save
-
-    if @restaurant.persisted?
-      redirect_to restaurants_path
-    else
-      flash[:errors] = @restaurant.errors.full_messages
-      render :new
-    end
+    # @restaurant = Restaurant.new (restaurant_params)
+    # @restaurant.user = @current_user
+    # @restaurant.save
+    #
+    # if @restaurant.persisted?
+    #   redirect_to restaurants_path
+    # else
+    #   flash[:errors] = @restaurant.errors.full_messages
+    #   render :new
+    # end
   end
 
   def index
@@ -37,8 +37,8 @@ class RestaurantsController < ApplicationController
     #   redirect_to restaurants_path
     #   return
     # end
-    Restaurant.find(params[:id]).destroy
-    redirect_to restaurants_path
+    # Restaurant.find(params[:id]).destroy
+    # redirect_to restaurants_path
   end
 
   private
