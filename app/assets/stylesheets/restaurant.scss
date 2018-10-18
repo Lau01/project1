@@ -197,9 +197,13 @@
   width: 35vw;
 }
 
+#indexBox {
+  border-bottom: 1px solid grey;
+}
+
 
 .menuImage {
-  max-height:70vh;
+  height: 70vh;
   width: 65vw;
   overflow: hidden;
   position: relative;
@@ -284,10 +288,13 @@
 }
 
 .descriptionContainer {
-  border-top: 0.5px solid grey;
-  border-bottom: 0.5px solid grey;
-  margin-top: 4em;
+  border-bottom: 0.5px solid rgba(200, 200, 200, 0.4);
   padding: 4em 0 4em 0;
+}
+
+.borderTop {
+  margin-top: 4em;
+  border-top: 0.5px solid rgba(290, 290, 290, 0.2);
 }
 
 .titleDesc {
