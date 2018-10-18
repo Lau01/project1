@@ -34,10 +34,9 @@
       </div>
     </div>
 
-
     <div class="col-2 col">
       <%= form_tag(reviews_path, method: :get) do %>
-        <%= text_field_tag :name %>
+        <%= text_field_tag :name, nil, placeholder: "Enter a name", class: "searchBar" %>
         <%= submit_tag "Search User's Post" %>
       <% end %>
       <br>
