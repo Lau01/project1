@@ -1,5 +1,7 @@
 
 $(document).ready(function () {
+
+  
   // TweenMax.to('.infoCard', 1.5, {
   //   left: '50vw',
   //   ease: Power1.easeOut,

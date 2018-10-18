@@ -5,7 +5,7 @@
       <ul>
         <% @restaurants.each do |r| %>
 
-          <li class="restaurantList"><%= link_to r.name, restaurant_path(r.id), class:"linkText"  %></li>
+          <li class="restaurantList"><%= link_to r.name, restaurant_path(r.id), class:"linkText" %></li>
 
         <% end %>
       </ul>
