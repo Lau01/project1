@@ -19,7 +19,8 @@
               </div>
               <div class="favReview">
                 Rating:<%= r.rating %> / 5.0 |
-                Likes: AMOUNT
+                Likes: <%= r.liked_by.length %>
+                <%= link_to 'Like Post', review_path(r.id) %>
               </div>
             </div>
             <% end %>
@@ -35,7 +36,7 @@
       <% end %>
       <% if @current_user.present? %>
         <%= link_to 'Share your experience', new_review_path %>
-        Likes?
+        <%= link_to 'My Liked Posts', reviews_path %>
         <br>
         Follows?
       <% end %>

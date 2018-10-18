@@ -28,7 +28,10 @@ class ReviewsController < ApplicationController
       flash[:errors] = @review.errors.full_messages
       render :new
     end
+
+
   end
+
 
   def index
 
@@ -37,6 +40,7 @@ class ReviewsController < ApplicationController
     else
       @reviews = Review.all
     end
+
 
   end
 

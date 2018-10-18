@@ -9,6 +9,7 @@
   </div>
   <div>
     <%= @review.rating %> / 5.0
+    Likes: <%= @review.liked_by.length %>
   </div>
   <div>
     <%= cl_image_tag @review.image %>
