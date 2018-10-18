@@ -1,24 +1,47 @@
-# README
+# Project Title
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+My first Ruby on Rails project, a website called "H3S". [Link to website](https://hatted3.herokuapp.com/)
 
-Things you may want to cover:
+## Description
 
-* Ruby version
+The web app allows users to comment/review on restaurants in Sydney that have received a 3 Hat Award by [Australia's Good Food Guide](https://www.goodfood.com.au/).
 
-* System dependencies
+### Ruby Gems used
 
-* Configuration
+Used the following gems which are put into the Gemfile:
 
-* Database creation
+```
+gem 'jquery-rails'
+gem 'greensock-rails'
+gem 'bootstrap', '~> 4.1.3'
+gem 'cloudinary'
+gem 'rails_12factor', group: :production
+```
 
-* Database initialization
+## Features
 
-* How to run the test suite
+* Comment on and rate restaurants and upload images.
 
-* Services (job queues, cache servers, search engines, etc.)
+* Users can Like and Unlike posts.
 
-* Deployment instructions
+* View user profiles and their liked posts. Users can also change their profile pictures.
 
-* ...
+* Search reviews via users.
+
+### Known Bugs
+
+* Not all pages are responsive.
+
+* Some error signalling does not work for Login Page.
+
+### Wishlist/to-do list
+
+* Following other users and restaurants.
+
+* More options to customise user profiles (e.g background and banner pictures).
+
+* More responsive pages.
+
+* Admin accounts and privileges adding restaurants via an API.
+
+* Proper text in restaurant descriptions.
