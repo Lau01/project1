@@ -1,6 +1,10 @@
 
-
-<h2><%= @user.name %>'s Profile</h2>
+<div class="paddingTitle">
+  <h2><%= @user.name %>'s Profile</h2>
+  <% if @current_user.present? && @current_user == @user %>
+    <%= link_to 'Edit Profile', edit_user_path %>
+  <% end %>
+</div>
 <div class="container indexReviewBox">
   <div class="row">
     <div class="col-10">
@@ -29,15 +33,5 @@
       </div>
     </div>
 
-
-    <div class="col">
-      <% if @current_user.present? %>
-        <%= link_to 'Share your experience', new_review_path %>
-      <% end %>
-      <br>
-      <% if @current_user.present? && @current_user == @user %>
-        <%= link_to 'Edit Profile', edit_user_path %>
-      <% end %>
-    </div>
   </div>
 </div>

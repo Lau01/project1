@@ -1,3 +1,46 @@
-<h2>Make a new review</h2>
 
-<%= render partial: 'form' %>
+
+<div class="signUpTitle">
+  Add your Experience
+</div>
+
+<div class="wrapper">
+  <div class="signUpContainer">
+    <div class="signUpForm">
+      <%= form_for @review, html: {multipart: true} do |f| %>
+        <div class="inputForm">
+          <%= f.label :restaurant_id, 'Restaurant', for: "inputRestaurant" %>
+          <%= f.collection_select :restaurant_id, Restaurant.all, :id, :name, prompt: 'Please choose a Restaurant', id: "inputRestaurant", class: "form-control"%>
+          <br>
+          <div class="input-group resize">
+
+              <%= f.label :content, "Your experience" %>
+
+          <%= f.text_area :content, class:"form-control", 'aria-label' => "With textarea" %>
+          </div>
+          <br>
+          <%= f.label :rating %>
+          <%= f.text_field :rating %>
+          <br>
+          <%= f.label :image %>
+          <%= f.cl_image_upload :image %>
+          <br>
+        </div>
+        <div class="submitBox">
+          <%= f.submit %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class='errors'>
+  <% if flash[:errors].present?  %>
+     <strong>Please correct the following errors:</strong>
+     <ol>
+     <% flash[:errors].each do |error| %>
+       <li><%= error %></li>
+     <% end %>
+     </ol>
+  <% end %>
+</div>

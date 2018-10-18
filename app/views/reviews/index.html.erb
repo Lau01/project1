@@ -1,4 +1,6 @@
-<h2>Activity Feed</h1>
+<div class="paddingTitle">
+  <h2>Activity Feed</h2>
+</div>
 
 <div class="container indexReviewBox">
   <div class="row">
@@ -39,11 +41,6 @@
         <%= submit_tag "Search User's Post" %>
       <% end %>
       <br>
-      <% if @current_user.present? %>
-        <%= link_to 'Share your experience', new_review_path %>
-        <br>
-        Follows?
-      <% end %>
     </div>
   </div>
 </div>

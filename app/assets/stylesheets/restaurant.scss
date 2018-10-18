@@ -265,6 +265,7 @@
 }
 
 .bottomNav {
+  text-align: center !important;
   background-color: rgba(200, 200, 200, 0.5);
 }
 
@@ -288,13 +289,13 @@
 }
 
 .descriptionContainer {
-  border-bottom: 0.5px solid rgba(200, 200, 200, 0.4);
+  border-bottom: 1px solid rgba(200, 200, 200, 0.4);
   padding: 4em 0 4em 0;
 }
 
 .borderTop {
   margin-top: 4em;
-  border-top: 0.5px solid rgba(290, 290, 290, 0.2);
+  border-top: 1px solid rgba(200, 200, 200, 0.4);
 }
 
 .titleDesc {
@@ -363,6 +364,24 @@
   border-radius: 50%;
 }
 
+.paddingContainer {
+  // padding: 10px !important;
+  margin: 5px!important;
+}
+
+.imageRow {
+  margin-top: 15px !important;
+}
+
+.form-control {
+  width: 95%!important;
+  margin-left: 7px!important;
+}
+
 .floatLeft {
   text-align: left;
 }
+
+// .container {
+//   margin: 0 auto !important;
+// }
