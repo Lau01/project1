@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   post   "/login" => "session#create"
   delete "/login" => "session#destroy"
 
+  root to: "restaurants#index"
 
   resources :users, except: [:index]
   resources :restaurants
