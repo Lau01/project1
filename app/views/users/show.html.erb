@@ -46,6 +46,7 @@
     </div>
   </div>
 </div>
+<% if @user.reviews.length > 0 %>
 <div class="container indexReviewBox">
   <div class="row">
     <div class="col-10">
@@ -80,3 +81,9 @@
 
   </div>
 </div>
+<% else %>
+<div class="middleText">
+  <span class="smiley">:'(</span>
+</div>
+<div class="middleText">You have no posts. <%= link_to 'Add a post', new_review_path %></div>
+<% end %>
