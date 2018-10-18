@@ -6,6 +6,7 @@
   <% end %>
 </div>
 
+
 <div class="container indexReviewBox">
   <div class="row">
     <div class="col">
@@ -33,14 +34,14 @@
               </div>
             </div>
           </div>
+
+          <div>
+            Liked by:
+            <% @review.liked_by.each do |user| %>
+              <%= link_to user.name, user_path(user.id) %>
+            <% end %>
+          </div>
       </div>
-    </div>
-
-
-    <div class="col-2 col">
-      <%= form_tag(reviews_path, method: :get) do %>
-        <%= text_field_tag :name %><%= submit_tag "Search a User's Posts" %>
-      <% end %>
     </div>
   </div>
 </div>

@@ -5,6 +5,16 @@
 
 <div class="wrapper">
   <div class="signUpContainer">
+    <div class='errors'>
+      <% if flash[:errors].present?  %>
+         <strong>Please correct the following errors:</strong>
+         <ol>
+         <% flash[:errors].each do |error| %>
+           <li><%= error %></li>
+         <% end %>
+         </ol>
+      <% end %>
+    </div>
     <div class="signUpForm">
       <%= form_for @review, html: {multipart: true} do |f| %>
         <div class="inputForm">
@@ -31,15 +41,4 @@
       <% end %>
     </div>
   </div>
-</div>
-
-<div class='errors'>
-  <% if flash[:errors].present?  %>
-     <strong>Please correct the following errors:</strong>
-     <ol>
-     <% flash[:errors].each do |error| %>
-       <li><%= error %></li>
-     <% end %>
-     </ol>
-  <% end %>
 </div>

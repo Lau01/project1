@@ -1,9 +1,50 @@
 
 <div class="paddingTitle">
-  <h2><%= @user.name %>'s Profile</h2>
-  <% if @current_user.present? && @current_user == @user %>
-    <%= link_to 'Edit Profile', edit_user_path %>
-  <% end %>
+  <h2><p class="inlineBlock floatLeft"><%= cl_image_tag @user.image, class: "profileImageLarge" %></p>
+    <div class="titleProfile inlineBlock"><%= @user.name %>'s Profile</div>
+  </h2>
+  <div class="editLink">
+    <% if @current_user.present? && @current_user == @user %>
+      <%= link_to 'Edit Profile', edit_user_path %>
+    <% end %>
+  </div>
+  <div class="editLink">
+    Liked Posts: <%= @user.liked_reviews.length %>
+    <% if @user.liked_reviews.length > 0 %>
+      <button type="button" class="btn btn-primary modalLiked" data-toggle="modal" data-target=".bd-example-modal-lg">Liked Posts</button>
+    <% end %>
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="reviewsBox reviewsScrollIndex">
+            <% @user.liked_reviews.each do |r| %>
+              <div class="reviewCard">
+                <div class="reviewTitle">
+                  <p class="inlineBlock floatLeft"><%= cl_image_tag r.user.image, class: "profileImage" %></p>
+                  <p class="inlineBlock"><%=link_to r.user.name, user_path(r.user) %> on <%= link_to r.created_at.strftime("%D at %I:%M%p"), review_path(r.id) %> about <%= link_to r.restaurant.name, restaurant_path(r.restaurant) %>:</p>
+              </div>
+                <div class="reviewContent">
+                  <%= r.content %>
+                </div>
+                <div class="reviewImageBox">
+                  <%= cl_image_tag r.image, class: "reviewImage" %>
+                </div>
+                <div class="favReview">
+                  Rating: <%= r.rating %> / 5.0 |
+                  Likes: <%= r.liked_by.length %>
+                  <% if r.liked_by.include? @current_user %>
+                    <%= link_to 'Unlike Post', unlike_review_path(r.id), :id => "#{r.id}" %>
+                  <% else %>
+                    <%= link_to 'Like Post', like_review_path(r.id), :id => "#{r.id}" %>
+                  <% end %>
+                </div>
+              </div>
+              <% end %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <div class="container indexReviewBox">
   <div class="row">
@@ -25,7 +66,11 @@
               <div class="favReview">
                 Rating: <%= r.rating %> / 5.0 |
                 Likes: <%= r.liked_by.length %>
-                <%= link_to 'Like Post', like_review_path(r.id), :id => "#{r.id}" %>
+                <% if r.liked_by.include? @current_user %>
+                  <%= link_to 'Unlike Post', unlike_review_path(r), :id => "#{r.id}" %>
+                <% else %>
+                  <%= link_to 'Like Post', like_review_path(r.id), :id => "#{r.id}" %>
+                <% end %>
               </div>
             </div>
             <% end %>

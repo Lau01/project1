@@ -66,6 +66,10 @@ class ReviewsController < ApplicationController
     redirect_to review_path(@review)
   end
 
+  def likedreviews
+    @user= User.find params[:id]
+  end
+
   def show
     @review = Review.find params[:id]
   end
@@ -89,7 +93,7 @@ class ReviewsController < ApplicationController
         @review.image = response["public_id"]
         @review.save
       end
-      
+
       redirect_to review_path(@review)
     else
       flash[:errors] = @review.errors.full_messages

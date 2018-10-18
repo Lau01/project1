@@ -13,65 +13,55 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="<%=  %>">Hats</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <%= link_to 'Home', restaurants_path, class:'nav-link' %>
-          </li>
-          <li class="nav-item">
-            <%= link_to 'Reviews', reviews_path, class:'nav-link' %>
-          </li>
-          <li class="nav-item">
+    <div class="mainContainer">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="<%=  %>">Hats</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarText">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <%= link_to 'Home', restaurants_path, class:'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Reviews', reviews_path, class:'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <% if @current_user.present? %>
+                <%= link_to 'My Profile', user_path(@current_user.id), class:'nav-link' %>
+              <% else %>
+                <%= link_to 'My Profile', login_path, class:'nav-link' %>
+                <% end %>
+            </li>
+          </ul>
+          <span class="navbar-text nav-link">
             <% if @current_user.present? %>
-              <%= link_to 'My Profile', user_path(@current_user.id), class:'nav-link' %>
+              <p class="inlineBlock">Welcome <%= @current_user.name %></p>
+              <%= cl_image_tag @current_user.image, class: "profileImage" %>
+              <%= link_to 'Log Out', login_path, method: 'delete', class:'nav-link inlineBlock' %>
             <% else %>
-              <%= link_to 'My Profile', login_path, class:'nav-link' %>
-              <% end %>
-          </li>
-        </ul>
-        <span class="navbar-text nav-link">
-          <% if @current_user.present? %>
-            <p class="inlineBlock">Welcome <%= @current_user.name %></p>
-            <%= cl_image_tag @current_user.image, class: "profileImage" %>
-            <%= link_to 'Log Out', login_path, method: 'delete', class:'nav-link inlineBlock' %>
-          <% else %>
-            <%= link_to 'Log In', login_path, class:'nav-link inlineBlock' %>
-            <%= link_to 'Sign Up', new_user_path, class:'nav-link inlineBlock' %>
-          <% end %>
-        </span>
+              <%= link_to 'Log In', login_path, class:'nav-link inlineBlock' %>
+              <%= link_to 'Sign Up', new_user_path, class:'nav-link inlineBlock' %>
+            <% end %>
+          </span>
+        </div>
+      </nav>
+      <%= yield %>
+      <div class="footerBar">
+        <div class="container">
+          <div class="row">
+            <div class="col-8">
+              <ul class="footerList">
+                <li>Privacy</li>
+                <li>Legal</li>
+                <li>Terms and Conditions</li>
+              </ul>
+            </div>
+            <div class="col-4 arialFont">© 2018 all rights reserved</div>
+          </div>
+        </div>
       </div>
-    </nav>
-
-    <!-- <% if @current_user.present? %>
-      <p>Welcome <%= @current_user.name %></p>
-      <%= link_to 'Make a new review', new_review_path %>
-      <%= link_to 'Add a new Restaurant', new_restaurant_path %>
-      <%= link_to 'LOG OUT', login_path, method: 'delete' %>
-      <% else %>
-      <%= link_to 'LOG IN', login_path %>
-      <%= link_to 'Sign UP', new_user_path %>
-    <% end %> -->
-    <!-- <h1>FOODSITENAME</h1>
-    <% if @current_user.present? %>
-      <p>Welcome <%= @current_user.name %></p>
-      <%= link_to 'Make a new review', new_review_path %>
-      <%= link_to 'Add a new Restaurant', new_restaurant_path %>
-      <%= link_to 'LOG OUT', login_path, method: 'delete' %>
-      <% else %>
-      <%= link_to 'LOG IN', login_path %>
-      <%= link_to 'Sign UP', new_user_path %>
-    <% end %>
-    <br>
-    <br>
-    <nav>
-      <%= link_to 'REVIEWS', reviews_path %>
-      <%= link_to 'Restaurants', restaurants_path %>
-    </nav> -->
-    <%= yield %>
+    </div>
   </body>
 </html>

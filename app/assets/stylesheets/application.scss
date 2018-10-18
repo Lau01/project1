@@ -21,6 +21,15 @@ body { //!important
    margin: 0;
    padding: 0;
    font-family: 'Playfair Display', serif;
+   height: 100%;
+   position: relative;
+ }
+
+ .mainContainer {
+   min-height: 100vh;
+   display: block;
+   position: relative;
+   padding-bottom: 100px;
  }
 
 .inlineBlock {
@@ -38,4 +47,33 @@ nav {
 
 .paddingTitle {
   padding: 15px;
+}
+
+.footerBar {
+  padding: 20px;
+  background-color: black;
+  color: rgba(280,280,280,0.5);
+  height: 70px;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+}
+
+
+.footerList {
+  list-style-type: none;
+}
+
+.footerRow {
+  margin-top: 1em;
+}
+
+.footerList > li {
+  display: inline;
+  padding: 15px;
+  font-family: Arial;
+}
+
+.arialFont {
+  font-family: Arial;
 }

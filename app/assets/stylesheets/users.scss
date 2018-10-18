@@ -18,11 +18,23 @@
   width: 700px;
 }
 
+.errors > ul > li {
+  list-style-type: none;
+}
+
+.errors > ol > li {
+  list-style-type: none;
+}
+
 .signUpContainer {
   margin: 0 !important;
   width: 100%;
   border: 1px solid grey;
   text-align: center;
+}
+
+.titleProfile {
+
 }
 
 .inputForm {
@@ -36,4 +48,24 @@
 
 .signUpForm {
   margin: 4em 0 4em 0;
+}
+
+.profileImageLarge {
+  margin: 1em 1em 0 1em;
+  border-radius: 50%;
+  height: 110px;
+  width: 110px;
+}
+
+.editLink {
+  margin-left: 3em;
+}
+
+.modalLarger {
+  margin: 0 auto !important;
+  width: 800px !important;
+}
+
+.modalLiked {
+  margin-left: 20px;
 }
