@@ -1,12 +1,10 @@
 <div class="paddingTitle">
   <h2><%= @review.user.name %>'s Post made on <%= @review.created_at.strftime("%D at %I:%M%p") %> about <%= link_to @review.restaurant.name, restaurant_path(@review.restaurant) %> </h2>
+  <% if @current_user == @review.user %>
+    <%= link_to 'Edit Post', edit_review_path(@review) %>
+    <%= link_to 'Delete Post', review_path, method: 'delete' %>
+  <% end %>
 </div>
-
-<% if @current_user == @review.user %>
-  <%= link_to 'Edit Post', edit_review_path(@review) %>
-  <%= link_to 'Delete Post', review_path, method: 'delete' %>
-
-<% end %>
 
 <div class="container indexReviewBox">
   <div class="row">
